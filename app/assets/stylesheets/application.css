@@ -10,6 +10,97 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap.min
  *= require_tree .
  *= require_self
  */
+.item{
+    margin-top: 40px
+}
+
+
+.back{
+    background-color: #e4f6e9;
+    height: 695px;;
+}
+
+
+body{
+    margin: 0;
+}
+
+
+.navi{
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+
+.display-1{
+    font-weight: bold;
+
+}
+
+.card{
+    border-radius: 30px;
+    background: white;
+    -webkit-box-shadow: 0px 10px 67px -13px rgba(0,0,0,0.58);
+    -moz-box-shadow: 0px 10px 67px -13px rgba(0,0,0,0.58);
+    box-shadow: 0px 10px 67px -13px rgba(0,0,0,0.58);
+    position: relative;
+}
+
+.sombra{
+    -webkit-box-shadow: -2px -12px 67px -13px rgba(0,0,0,0.58);
+    -moz-box-shadow: -2px -12px 67px -13px rgba(0,0,0,0.58);
+    box-shadow: -2px -12px 67px -13px rgba(0,0,0,0.58);
+    z-index: 1000
+}
+
+.contenido{
+    height: 150%;
+}
+
+
+.link{
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    font-weight: 300;
+    font-weight: 700
+}
+
+.link:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.display-4{
+    font-weight: 800;
+    font-size: 40px
+}
+
+.btn{
+    border-radius: 30px;
+    -webkit-box-shadow: -2px -12px 67px -13px rgba(0,0,0,0.58);
+    -moz-box-shadow: -2px -12px 67px -13px rgba(0,0,0,0.58);
+    box-shadow: -2px -12px 67px -13px rgba(0,0,0,0.58);
+}
+
+
+.logo{
+    margin-left: 57px
+}
+
+
+.login{
+    height: 450px;
+    width: 350px;
+    background: white;
+    position: relative;
+}
+
+.modal-content{
+    border-radius: 2rem !important;
+    width: 600px !important;
+}

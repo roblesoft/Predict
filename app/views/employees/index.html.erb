@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="display-1" style="margin-left: 40px">Usuarios</h1>
+<div class="row" style="margin-left: 10px">
+<% @employees.each do |user| %>
+<div class="card" style="width: 300px; margin-left: 30px">
+<div class="card-body ">
+<div class="col">
+
+
+  <%= image_tag  "default-user-image.png", height: '230px', style: "border-radius: 60px" %>
+  <p class="lead"><%= user.name %></p> 
+  <p class="lead"><%= user.job %></p> 
+  <%= link_to 'Editar', edit_employee_path(user), class: "btn btn-warning"%> <br>
+  <%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" , style: "margin-top: 10px" %>
+  </div>
+  </div>
+  </div>
+<% end %>
+</div>
+
+<%= link_to 'New Employee', new_employee_path %>

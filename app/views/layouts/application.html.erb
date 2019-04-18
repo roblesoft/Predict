@@ -7,9 +7,74 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+    <div class="container-fluid" style="position: fixed">
+      <div class="row ">
+        <div class="col-2 navi sombra">
+
+        <div class="row">
+          <%= image_tag 'logo.png', width: "80", height: "80", style: "margin-left: 50px"%>
+        </div>
+        <div class="row">
+
+          <h5 class="logo">Predict</h5>
+        </div>
+        <div class="row item">
+        <ion-icon name="bookmarks" style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <%= link_to  "Productos", sales_path, class: "link lead" %>
+        </div>
+        <div class="row item">
+          <ion-icon name="clipboard" style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <%= link_to  "Nuevo Producto", new_sale_path, class: "link" %>
+        </div>
+        <div class="row item">
+          <ion-icon name="trending-up" style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <h5 class="link">Reportes</h5>
+        </div>
+        <div class="row item">
+          <ion-icon name="stats" style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <h5 class="link">Graficas</h5>
+        </div>
+        <div class="row item">
+
+          <ion-icon name="people" style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <%= link_to  "Empleados", employees_path, class:"link" %>
+        </div>
+        <div class="row item">
+          <ion-icon name="person-add" style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <%= link_to  "Nuevo empleado", new_employee_path, class: "link" %>
+        </div>
+        <div class="row item">
+          <ion-icon name="calendar"style="font-size: 20px"></ion-icon>
+          &nbsp;
+          <%= link_to  "Meses", months_path, class: "link" %>
+        </div>
+
+        <div class="row item">
+          <% if user_signed_in? %>
+            <ion-icon name="log-out" style="font-size: 20px" ></ion-icon>
+            &nbsp;
+            <%= link_to('Cerrar sesión', destroy_user_session_path, method: :delete, class: "link" ) %>        
+          <% end %>
+        </div>
+        </div>
+
+        <% end %>
+
+        <div class="<%= user_signed_in? ? 'col-10': 'col-12' %> back ">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
