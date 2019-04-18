@@ -16,6 +16,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'eps', '~> 0.1.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
+gem "chartkick"
+
+gem 'groupdate'
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views

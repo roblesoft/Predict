@@ -26,7 +26,18 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new
+    @sale = Sale.where("name = ?", params[:name]).first
+
+    puts @sale.name
+    @product.name = @sale.name
+    @product.key = @sale.key
+    @product.price = @sale.price
+    @product.costo = @sale.costo
+    @product.quantity = params[:quantity]
+    @product.month_id = params[:month_id]
+
+
 
     respond_to do |format|
       if @product.save
@@ -58,7 +69,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to months_path, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +85,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :key, :quantity, :month_id, :costo)
+      params.permit(:name, :price, :key, :quantity, :month_id, :costo)
     end
 end

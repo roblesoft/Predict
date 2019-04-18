@@ -1,3 +1,3 @@
 class Sale < ApplicationRecord
-  belongs_to :month
+    validates :name, uniqueness: true
 end

@@ -6,7 +6,6 @@ class MonthsController < ApplicationController
   # GET /months.json
   def index
     @months = Month.all
-    puts(Product.all)
   end
 
   # GET /months/1

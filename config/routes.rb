@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'estadistica/charts'
   resources :sales
   devise_for :users
   root 'products#index'

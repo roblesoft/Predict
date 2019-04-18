@@ -1,0 +1,10 @@
+
+<br>
+<div class="card">  
+    <div class="card-body">
+        <h1 class="display-1">Estadisticas</h1>
+        <%= line_chart @products_per_month.map { |product|
+            {name: product.name, data: product.data}
+         }%>
+    </div>
+</div>

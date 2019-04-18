@@ -10,52 +10,27 @@
     <h1 class="display-1">Producto</h1>
     <div class="row">
       <div class="col">
-      <%= form_with(model: product, local: true) do |form| %>
-        <% if product.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-            <ul>
-            <% product.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
+      <%= form_tag "/products/", method: :post do |form| %>
 
         <div class="form-group">
-          <%= form.label :nombre %> <br>
-          <%= form.select :name, options_for_select(@sales.collect{ |u| [u.name, u.name]}), {},class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= form.label :costo %> <br>
-          <%= form.number_field :costo, class: "form-control" %>
+          <%= label_tag :nombre %> <br>
+          <%= select_tag :name, options_from_collection_for_select(@sales, "name", "name"), class: "form-control" %>
         </div>
 
         <div class="field">
-          <%= form.label :precio %>
-          <%= form.select :price, options_for_select(@sales.collect{ |u| [u.price, u.price]}), {},class: "form-control" %>
+          <%= label_tag :cantidad %>
+          <%= number_field_tag :quantity, class: "form-control" %>
         </div>
 
         <div class="field">
-          <%= form.label :clave %>
-          <%= form.select :key, options_for_select(@sales.collect{ |u| [u.key, u.key]}), {},class: "form-control" %>
+          <%= label_tag :month %>
+          <%= number_field_tag :month_id, class: "form-control" %>
         </div>
 
-        <div class="field">
-          <%= form.label :cantidad %>
-          <%= form.number_field :quantity, class: "form-control" %>
-        </div>
-
-        <div class="field">
-          <%= form.label :month_id %>
-          <%= form.select :month_id, options_for_select(@months.collect{ |u| [u.name, u.id]}), {},class: "form-control" %>
-        </div>
         <br>
 
         <div class="actions">
-          <%= form.submit "Añadir", class: "btn btn-success" %>
+          <%= submit_tag "Añadir", class: "btn btn-success" %>
         </div>
       <% end %>
 

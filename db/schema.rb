@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_005648) do
+ActiveRecord::Schema.define(version: 2019_04_18_010856) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -42,11 +42,9 @@ ActiveRecord::Schema.define(version: 2019_04_18_005648) do
     t.string "name"
     t.integer "price"
     t.integer "key"
-    t.integer "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "costo"
-    t.index ["month_id"], name: "index_sales_on_month_id"
   end
 
   create_table "users", force: :cascade do |t|

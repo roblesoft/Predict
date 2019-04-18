@@ -28,7 +28,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+        format.html { redirect_to sales_path, notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:name, :price, :key, :quantity, :month_id, :costo)
+      params.require(:sale).permit(:name, :price, :key, :quantity, :costo)
     end
 end
