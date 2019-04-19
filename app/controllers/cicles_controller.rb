@@ -5,11 +5,14 @@ class CiclesController < ApplicationController
   # GET /cicles.json
   def index
     @cicles = Cicle.all
+    @cicle = Cicle.new
   end
 
   # GET /cicles/1
   # GET /cicles/1.json
   def show
+    @stages = @cicle.stages.all
+    @stage = Stage.new
   end
 
   # GET /cicles/new

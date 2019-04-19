@@ -1,27 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cicles</h1>
+<div class="card">
+<div class="card-body">
+<div class="row">
+<div class="col">
 
-<table>
+<h1 class="display-1">Años</h1>
+
+
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Año</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @cicles.each do |cicle| %>
+    <% @cicles.each do |month| %>
       <tr>
-        <td><%= cicle.name %></td>
-        <td><%= link_to 'Show', cicle %></td>
-        <td><%= link_to 'Edit', edit_cicle_path(cicle) %></td>
-        <td><%= link_to 'Destroy', cicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= month.name %></td>
+        <td><%= link_to 'Mostrar', month, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Eliminar', month, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+    <h5 class="display-5">Nuevo año</h5>
+    <%= render "form", cicle: @cicle%>
+</div>
+</div>
+</div>
 
-<br>
+</div>
 
 <%= link_to 'New Cicle', new_cicle_path %>

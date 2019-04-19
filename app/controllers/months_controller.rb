@@ -7,7 +7,6 @@ class MonthsController < ApplicationController
   def index
     @months = Month.all
     @month = Month.new
-
   end
 
   # GET /months/1

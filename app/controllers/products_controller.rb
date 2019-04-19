@@ -37,8 +37,6 @@ class ProductsController < ApplicationController
     @product.quantity = params[:quantity]
     @product.month_id = params[:month_id]
 
-
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to months_path, notice: 'Product was successfully created.' }
