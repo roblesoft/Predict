@@ -2,9 +2,12 @@
 <br>
 <div class="card">  
     <div class="card-body">
-        <h1 class="display-1">Estadisticas</h1>
+        <h1 class="display-4" style="font-weight:bold">Estadisticas</h1>
+        <p style="color: gray; ">Seguimiento de las unidades vendidas por mes</p>
         <%= line_chart @products_per_month.map { |product|
-            {name: product.name, data: product.data}
-         }%>
+            {name: product.name, data: product.data, }
+         },  ytitle: "Unidades vendidas"%>
+         <p style="font-weight: bold; font-size: 25px">Promedio de ventas</p>
+         <%= pie_chart @avarage_products, width: "400px", height: "190px"%>
     </div>
 </div>

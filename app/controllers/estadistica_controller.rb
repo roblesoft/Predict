@@ -31,5 +31,18 @@ class EstadisticaController < ApplicationController
       product_per_month = Data.new product, data_per_month
       @products_per_month << product_per_month
     end
+
+    @promedios = Array.new
+
+    @products_per_month.each do |product|
+      prom = 0
+      product.data.each do |number|
+        prom += number[1]
+      end
+      @promedios << prom / @products_per_month[1].data.size
+    end
+    @avarage_products = Hash[@products.zip(@promedios).to_h]
   end
+
+
 end

@@ -10,59 +10,60 @@
     <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
   </head>
 
-  <body>
+  <body class="back">
     <% if user_signed_in? %>
-    <div class="container-fluid" style="position: fixed">
+    <div class="container-fluid">
       <div class="row ">
-        <div class="col-2 navi sombra">
+        <div class="col-2 navi " style="position: fixed; height: 100%; background: rgb(50, 50, 50); line-height: 1;">
 
         <div class="row">
-          <%= image_tag 'logo.png', width: "80", height: "80", style: "margin-left: 50px"%>
+          <div style="background: red;background: red; width: 120px;  margin-left: 30px; height: 120px; border-radius: 60px; ">
+            <%= image_tag 'logo.png', width: "60", height: "60", style: "filter: invert(100%);margin-left: 30px; margin-top: 30px;"%>
+          </div>
         </div>
         <div class="row">
-
-          <h5 class="logo">Predict</h5>
+          <h5 class="logo" style="color: white">Predict</h5>
         </div>
         <div class="row item">
-        <ion-icon name="bookmarks" style="font-size: 20px"></ion-icon>
+        <ion-icon name="bookmarks" style="font-size: 20px; color: white"></ion-icon>
           &nbsp;
           <%= link_to  "Productos", sales_path, class: "link lead" %>
         </div>
         <div class="row item">
-          <ion-icon name="clipboard" style="font-size: 20px"></ion-icon>
+          <ion-icon name="clipboard" style="font-size: 20px; color: white"></ion-icon>
           &nbsp;
           <%= link_to  "Nuevo Producto", new_sale_path, class: "link" %>
         </div>
         <div class="row item">
-          <ion-icon name="trending-up" style="font-size: 20px"></ion-icon>
+          <ion-icon name="trending-up" style="font-size: 20px; color: white"></ion-icon>
           &nbsp;
           <h5 class="link">Reportes</h5>
         </div>
         <div class="row item">
-          <ion-icon name="stats" style="font-size: 20px"></ion-icon>
+          <ion-icon name="stats" style="font-size: 20px; color: gray; color: white"></ion-icon>
           &nbsp;
           <%= link_to "Graficas", estadistica_charts_path, class: "link"%>
         </div>
         <div class="row item">
 
-          <ion-icon name="people" style="font-size: 20px"></ion-icon>
+          <ion-icon name="people" style="font-size: 20px; color: white"></ion-icon>
           &nbsp;
           <%= link_to  "Empleados", employees_path, class:"link" %>
         </div>
         <div class="row item">
-          <ion-icon name="person-add" style="font-size: 20px"></ion-icon>
+          <ion-icon name="person-add" style="font-size: 20px; color: white"></ion-icon>
           &nbsp;
           <%= link_to  "Nuevo empleado", new_employee_path, class: "link" %>
         </div>
         <div class="row item">
-          <ion-icon name="calendar"style="font-size: 20px"></ion-icon>
+          <ion-icon name="calendar"style="font-size: 20px; color: white"></ion-icon>
           &nbsp;
           <%= link_to  "Meses", months_path, class: "link" %>
         </div>
 
         <div class="row item">
           <% if user_signed_in? %>
-            <ion-icon name="log-out" style="font-size: 20px" ></ion-icon>
+            <ion-icon name="log-out" style="font-size: 20px; color: white" ></ion-icon>
             &nbsp;
             <%= link_to('Cerrar sesión', destroy_user_session_path, method: :delete, class: "link" ) %>        
           <% end %>
@@ -71,8 +72,9 @@
 
         <% end %>
 
-        <div class="<%= user_signed_in? ? 'col-10': 'col-12' %> back ">
+        <div class="<%= user_signed_in? ? 'col-10': 'col-12' %> " style="margin-left: 16.6%;height: 100%; ">
           <%= yield %>
+          <br>
         </div>
       </div>
     </div>
