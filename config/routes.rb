@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :years
+  resources :cicles
   get 'estadistica/charts'
   resources :sales
   devise_for :users

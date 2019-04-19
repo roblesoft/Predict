@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class YearTest < ActiveSupport::TestCase
+class CicleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

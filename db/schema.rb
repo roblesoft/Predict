@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_005828) do
+ActiveRecord::Schema.define(version: 2019_04_19_013333) do
+
+  create_table "cicles", force: :cascade do |t|
+    t.integer "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -25,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_04_19_005828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "year_id"
+    t.integer "cicle_id"
+    t.index ["cicle_id"], name: "index_months_on_cicle_id"
     t.index ["year_id"], name: "index_months_on_year_id"
   end
 

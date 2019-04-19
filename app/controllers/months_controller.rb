@@ -7,6 +7,7 @@ class MonthsController < ApplicationController
   def index
     @months = Month.all
     @month = Month.new
+
   end
 
   # GET /months/1
@@ -29,7 +30,6 @@ class MonthsController < ApplicationController
   # POST /months.json
   def create
     @month = Month.new(month_params)
-    @month.year_id = params[:id]
 
     respond_to do |format|
       if @month.save
@@ -74,6 +74,6 @@ class MonthsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def month_params
-      params.require(:month).permit(:name, :year)
+      params.require(:month).permit(:name)
     end
 end
