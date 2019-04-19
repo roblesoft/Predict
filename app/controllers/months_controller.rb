@@ -6,6 +6,7 @@ class MonthsController < ApplicationController
   # GET /months.json
   def index
     @months = Month.all
+    @month = Month.new
   end
 
   # GET /months/1
@@ -28,6 +29,7 @@ class MonthsController < ApplicationController
   # POST /months.json
   def create
     @month = Month.new(month_params)
+    @month.year_id = params[:id]
 
     respond_to do |format|
       if @month.save

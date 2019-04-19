@@ -1,9 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @year.year %>
-</p>
+<div class="card">
+<div class="card-body">
+<div class="row">
+<div class="col">
 
-<%= link_to 'Edit', edit_year_path(@year) %> |
-<%= link_to 'Back', years_path %>
+<h1 class="display-1">Meses</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mes</th>
+      <th>Año</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @months.each do |month| %>
+      <tr>
+        <td><%= month.name %></td>
+        <td><%= month.year %></td>
+        <td><%= link_to 'Mostrar', month, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Eliminar', month, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    <h5 class="display-5">Nuevo mes</h5>
+  <%= render 'months/form', month: @month %>
+</div>
+</div>
+</div>
+
+</div>

@@ -10,6 +10,8 @@ class YearsController < ApplicationController
   # GET /years/1
   # GET /years/1.json
   def show
+    @months = @year.months.all
+    @month = Month.new
   end
 
   # GET /years/new

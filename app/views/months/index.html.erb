@@ -28,7 +28,8 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Nuevo mes', new_month_path , class: "btn btn-success"%>
+    <h5 class="display-5">Nuevo mes</h5>
+  <%= render 'form', month: @month %>
 </div>
 </div>
 </div>
