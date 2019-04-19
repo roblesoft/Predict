@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.select(:name, options_for_select(@months)) %>
   </div>
 
 

@@ -6,11 +6,58 @@ class EstadisticaController < ApplicationController
       @data = data
     end
   end
+
+  def years
+    @years = Cicle.all
+
+  end
+
   def charts
+
+    @year = Cicle.find(params[:id])
+
+    @products_data_quantity = Array.new
+
 
     @products = Array.new
     Sale.all.each do |sale|
       @products << sale.name
+    end
+
+
+    @products_stock = Product.all
+
+    @products.each do |product|
+      names = Array.new
+      @quantity = Array.new
+      @products_stock.each do |pro|
+        if product == pro.name
+          @quantity << pro.quantity
+        end
+      end
+
+      numbers = Array.new
+      @quantity.size.times do |number|
+        numbers << number + 1
+      end
+
+      data_per_product = Array.new
+
+      numbers.zip(@quantity).each do |key, value|
+        data_hash = Hash[key: key, quantity:value]
+        data_per_product << data_hash
+      end
+
+      data = Data.new product, data_per_product
+      @products_data_quantity << data
+    end
+    
+    @predictions = Array.new 
+
+    @products_data_quantity.each do |data|
+      model = Eps::Regressor.new(data.data, target: :quantity)
+      data = Data.new data.name, model.predict(key: @quantity.size + 1).to_i
+      @predictions << data
     end
 
     @products_per_month = Array.new
@@ -18,7 +65,7 @@ class EstadisticaController < ApplicationController
     @products.each do |product| 
       name_per_month = Array.new
       quantity_per_month = Array.new
-      Month.all.each do |month| 
+      @year.stages.all.each do |month| 
         month.products.all.size.times do |index|
           if product == month.products.all[index].name
             name_per_month << month.name

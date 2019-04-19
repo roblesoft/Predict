@@ -10,6 +10,9 @@ class StagesController < ApplicationController
   # GET /stages/1
   # GET /stages/1.json
   def show
+    @products = @stage.products.all
+    @sales = Sale.all
+    @product = Product.new
   end
 
   # GET /stages/new
@@ -29,7 +32,7 @@ class StagesController < ApplicationController
 
     respond_to do |format|
       if @stage.save
-        format.html { redirect_to cicles_path, notice: 'Stage was successfully created.' }
+        format.html { redirect_to cicle_path params[:cicle_id]}
         format.json { render :show, status: :created, location: @stage }
       else
         format.html { render :new }

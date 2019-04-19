@@ -1,3 +1,4 @@
 class Product < ApplicationRecord
-  belongs_to :month
+  belongs_to :stage
+
 end

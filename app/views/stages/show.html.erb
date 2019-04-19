@@ -1,13 +1,36 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="card">
+  <div class="card-body">
+    <p id="notice"><%= notice %></p>
+    <h1 class="display-1"><%= @stage.name %></h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Clave</th>
+              <th>Cantidad</th>
+              <th>Costo</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<p>
-  <strong>Name:</strong>
-  <%= @stage.name %>
-</p>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
 
-<p>
-  <strong>Cicle:</strong>
-  <%= @stage.cicle %>
-</p>
+                <td><%= product.price %></td>
+                <td><%= product.key %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.costo %></td>
+                <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", style: "color: white"  %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+  <%= render 'products/form' %>
+  </div>
+</div>
 
-<%= link_to 'Back', cicles_path %>
+

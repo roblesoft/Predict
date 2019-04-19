@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_021714) do
+ActiveRecord::Schema.define(version: 2019_04_19_160900) do
 
   create_table "cicles", force: :cascade do |t|
     t.integer "name"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2019_04_19_021714) do
     t.integer "price"
     t.integer "key"
     t.integer "quantity"
-    t.integer "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "costo"
-    t.index ["month_id"], name: "index_products_on_month_id"
+    t.integer "stage_id"
+    t.index ["stage_id"], name: "index_products_on_stage_id"
   end
 
   create_table "sales", force: :cascade do |t|

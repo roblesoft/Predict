@@ -13,6 +13,18 @@ class CiclesController < ApplicationController
   def show
     @stages = @cicle.stages.all
     @stage = Stage.new
+    @months = [["Enero", "Enero"], 
+               ["Febrero", "Febrero"],
+               ["Marzo", "Marzo"],
+               ["Abril", "Abril"],
+               ["Mayo", "Mayo"],
+               ["Junio", "Junio"],
+               ["Julio", "Julio"],
+               ["Agosto", "Agosto"],
+               ["Septiembre", "Septiembre"],
+               ["Octubre", "Octubre"],
+               ["Noviembre", "Noviembre"],
+               ["Diciembre", "Diciembre"]]
   end
 
   # GET /cicles/new

@@ -2,12 +2,42 @@
 <br>
 <div class="card">  
     <div class="card-body">
-        <h1 class="display-4" style="font-weight:bold">Estadisticas</h1>
-        <p style="color: gray; ">Seguimiento de las unidades vendidas por mes</p>
-        <%= line_chart @products_per_month.map { |product|
-            {name: product.name, data: product.data, }
-         },  ytitle: "Unidades vendidas"%>
-         <p style="font-weight: bold; font-size: 25px">Promedio de ventas</p>
-         <%= pie_chart @avarage_products, width: "400px", height: "190px"%>
+        <div style="line-height: .6">
+          <h1 class="display-4" style="font-weight:bold">Estadisticas del <%= @year.name %></h1>
+          <p style="color: gray; ">Seguimiento de las unidades vendidas por mes</p>
+        </div>
+        <div class="row">
+          <%= line_chart @products_per_month.map { |product|
+              {name: product.name, data: product.data, }
+          },  ytitle: "Unidades vendidas"%>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p style="font-weight: bold; font-size: 25px">Promedio de ventas</p>
+            <%= pie_chart @avarage_products, width: "500px", height: "190px"%>
+          </div>
+          <div class="col">
+            <div style="line-height: .6">
+              <p style="font-weight: bold; font-size: 25px">Predicciones</p>
+              <p style="color: gray; ">Predicciones de ventas del proximo mes</p>
+            </div>
+            <table class="table table-hover table-sm" style="border-radius: 10px">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" style="font-weight: bold;" >Producto</th>
+                  <th scope="col" style="font-weight: bold;" >Unidades vendidas</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @predictions.each do |prediction| %>
+                <tr>
+                  <td><p style="font-weight: bold; font-size: 16px"><%= prediction.name %></p></td>
+                  <td><%= prediction.data %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
 </div>
