@@ -1,4 +1,5 @@
 class EstadisticaController < ApplicationController
+  before_action :authenticate_user!
   class Data 
     attr_accessor :name, :data
     def initialize name, data
