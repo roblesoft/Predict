@@ -10,8 +10,7 @@
           <%= line_chart @products_per_month.map { |product|
               {name: product.name, data: product.data, }
           },  ytitle: "Unidades vendidas"%>
-        </div>
-        <div class="row">
+        </div> <div class="row">
           <div class="col">
             <p style="font-weight: bold; font-size: 25px">Promedio de ventas</p>
             <%= pie_chart @avarage_products, width: "500px", height: "190px"%>
@@ -26,13 +25,14 @@
                 <tr>
                   <th scope="col" style="font-weight: bold;" >Producto</th>
                   <th scope="col" style="font-weight: bold;" >Unidades vendidas</th>
-                </tr>
-              </thead>
+                  <th scope="col" style="font-weight: bold;" >Ganacias </th>
+                </thead>
               <tbody>
-              <% @predictions.each do |prediction| %>
+              <% @predictions.zip(@production_profit).each do |prediction, profit| %>
                 <tr>
                   <td><p style="font-weight: bold; font-size: 16px"><%= prediction.name %></p></td>
                   <td><%= prediction.data %></td>
+                  <td><%= profit.data %> MXN</td>
                 </tr>
               <% end %>
               </tbody>

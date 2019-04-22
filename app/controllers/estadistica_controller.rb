@@ -20,11 +20,14 @@ class EstadisticaController < ApplicationController
     @products_data_quantity = Array.new
 
 
-    @products = Array.new
-    Sale.all.each do |sale|
-      @products << sale.name
-    end
+    @products = Sale.all.map{ |sale| sale.name }
 
+    @profit_products = Sale.all.map { |sale| sale.price - sale.costo }
+
+    @lasted_sales = Stage.all.last.products.map { |sale| Hash[sale.name, sale.quantity]}
+    @lasted_sales.each do |sale|
+      puts sale
+    end
 
     @products_stock = Product.all
 
@@ -59,6 +62,15 @@ class EstadisticaController < ApplicationController
       model = Eps::Regressor.new(data.data, target: :quantity)
       data = Data.new data.name, model.predict(key: @quantity.size + 1).to_i
       @predictions << data
+    end
+
+
+    @production_profit = @predictions.zip(@profit_products).map do |prediction, profit|
+      Data.new prediction.name, prediction.data * profit
+    end
+
+    @production_profit.each do |product|
+      puts product.name + ": " + product.data.to_s
     end
 
     @products_per_month = Array.new
