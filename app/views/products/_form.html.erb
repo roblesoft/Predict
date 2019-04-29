@@ -1,32 +1,18 @@
-<div class="card-body ">
-    <h5 class="display-5">Producto</h5>
-    <div class="row">
-      <div class="col">
-      <%= form_tag "/products/", method: :post do |form| %>
-
-        <div class="form-group">
-          <%= label_tag :nombre %> <br>
-          <%= select_tag :name, options_from_collection_for_select(@sales, "name", "name"), class: "form-control" %>
-        </div>
-
-        <div class="field">
-          <%= label_tag :cantidad %>
-          <%= number_field_tag :quantity, class: "form-control" %>
-        </div>
-
-        <div class="field">
-          <%= label_tag :month %>
-          <%= number_field_tag :stage_id, class: "form-control" %>
-        </div>
-
-        <br>
-
-        <div class="actions">
-          <%= submit_tag "Añadir", class: "btn btn-success" %>
-        </div>
-      <% end %>
+<h5 class="display-5">Nueva dato</h5>
+<%= form_tag "/products/", method: :post do |form| %>
+    <div class="form-group">
+      <%= label_tag :nombre %> <br>
+      <%= select_tag :name, options_from_collection_for_select(@sales, "name", "name"), class: "form-control" %>
     </div>
+  <div class="form-group">
+      <%= label_tag :cantidad %> <br>
+      <%= number_field_tag :quantity, nil,  class: "form-control" %>
   </div>
-</div>
-
-
+  <div class="form-group">
+      <%= label_tag :month %>
+      <%= number_field_tag :stage_id, nil,  class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Añadir", class: "btn btn-success" %>
+  </div>
+<% end %>

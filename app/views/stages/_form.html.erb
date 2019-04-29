@@ -10,14 +10,14 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.select(:name, options_for_select(@months)) %>
+  <div class="form-group row">
+  <div class=" col-sm-10 ">
+    <%= form.select(:name, options_for_select(@months), class: "form-control") %>
   </div>
 
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-sm-2">
+    <%= form.submit "crear", class: "btn btn-success" %>
   </div>
+  </div>
+
 <% end %>
